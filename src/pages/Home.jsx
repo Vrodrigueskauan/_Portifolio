@@ -159,10 +159,19 @@ export default function Home() {
 
 
       </div>
-
-      <h2>Minhas Habilidades</h2>
+      <motion.div
+        className="title"
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: false, amount: 0.5 }}>
+      <h2 className="title">Minhas Habilidades</h2>
+      </motion.div> 
+      
       <div className="about-section">
-
+        <div className="hard-skills">
+          
+        </div>
         
       </div>
 

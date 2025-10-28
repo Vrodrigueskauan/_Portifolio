@@ -8,11 +8,12 @@
 
 .banner {
   width: 100%;
-  height: 510px; 
+  height: 890px; 
   background-color: #393E46;
   border-radius: 10px;
   display: flex;
   align-items: center;
+  gap: 10%;
 }
 
 
@@ -105,11 +106,12 @@
   padding: 20px;
   max-width: 900px;
   text-align: center;
+  gap: 10px;
 }
 
 
 .sobre {
-  margin-right: -10%;
+  margin-right: -15%;
   margin-left: 5%;
   max-width: 2320px;            
   padding: 22px 26px;      
@@ -232,7 +234,7 @@
   transform: rotate(12deg);
 }
 
-/* Efeito flutuante sutil */
+
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -246,13 +248,16 @@
 .project-section{
   display: grid;
   grid-template-columns: auto auto auto;
-  justify-content: space-between;
+  justify-content: center;
   padding: 5px;
-  gap: 10px;
- margin: 1%;
+  gap: 10%;
+  margin: 1%;
 
 }
 
+@media(min-width: 2300px){
+
+}
 
 
 
