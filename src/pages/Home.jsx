@@ -222,7 +222,7 @@ export default function Home() {
             viewport={{ once: false, amount: 0.5 }}
           >
             <Card
-              image="../public/img/ghostcat.png"
+              image="/public/img/ghostcat.png"
               title="GhostCat"
               description="Em desenvolvimento - Um site e plataforma de agendamento para um Studio de tatuagem, com IA interativa."
               tags={["React", "MySQL", "CSS", "Python"]}
