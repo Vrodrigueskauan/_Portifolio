@@ -128,7 +128,7 @@ export default function Home() {
                 fixedEnd="focado em performance e inovação."
                 typingSpeed={120}
                 deletingSpeed={60}
-                pauseBetween={1500}
+                pauseBetween={3000}
                 loop={true}
               />
             </motion.div>
