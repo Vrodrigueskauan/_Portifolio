@@ -1,0 +1,30 @@
+.typewriter-container {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: #e0e0e0;
+  display: inline-block;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.fixed-text {
+  color: #a0a0a0;
+}
+
+.changing-text {
+  color: #456882;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.cursor {
+  display: inline-block;
+  color: #456882;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
