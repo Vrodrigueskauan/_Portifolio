@@ -18,7 +18,7 @@ import emailjs from '@emailjs/browser';
 import Card from '../components/Card/Card.jsx';
 import Footer from "../components/Footer/Footer.jsx";
 import PillNav from "../components/NavBar/Navbar.jsx";
-import logo from "../../public/img/port-logo.png";
+import logo from "/img/port-logo.png";
 import TypewriterHighlight from '../components/Typewriter/Writer.jsx';
 
 import './Home.css'
@@ -98,7 +98,7 @@ export default function Home() {
 
 
           >
-            <img src="../public/img/foto.png" alt="" />
+            <img src="/img/foto.png" alt="" />
           </motion.div>
 
           <div className="banner-text">
@@ -208,7 +208,7 @@ export default function Home() {
           >
             <a href="https://animosity-web-g5ao.vercel.app">
               <Card
-                image="../../public/img/animosity.png"
+                image="/img/animosity.png"
                 title="Animosity"
                 description="Meu projeto do TCC para Etec MCM - Um site para um jogo de plataforma."
                 tags={["React", "Node.js", "CSS", "MySQL"]}
@@ -222,7 +222,7 @@ export default function Home() {
             viewport={{ once: false, amount: 0.5 }}
           >
             <Card
-              image="../../public/img/ghostcat.png"
+              image="/img/ghostcat.png"
               title="GhostCat"
               description="Em desenvolvimento - Um site e plataforma de agendamento para um Studio de tatuagem, com IA interativa."
               tags={["React", "MySQL", "CSS", "Python"]}
@@ -237,7 +237,7 @@ export default function Home() {
           >
 
             <Card
-              image="../../public/img/Byte Amigo.png"
+              image="/img/Byte Amigo.png"
               title="Byte Amigo"
               description="Uma plataforma desenvolvido para projeto interfdisciplinar da Etec MCM, que visa facilitar suporte técnico para todosm, e facilitar a vida dos técnicos para encontrar reparos."
               tags={["HTML", "CSS", "PhP", "MySQL"]}
