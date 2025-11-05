@@ -519,6 +519,10 @@ textarea {
     margin-right: 25%;
   }
 
+  .contact-form-container{
+    margin-left: 0;
+  }
+
   /* Skills */
   .habilidades {
     flex-direction: column;
