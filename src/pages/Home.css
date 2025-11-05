@@ -182,11 +182,17 @@
 
 .skills-container {
   position: relative;
-  width: 70%;
-  height: 250px; 
+  width: 150%;
+  height: 100%; 
   margin-right: 30%;
   overflow: visible;
-  margin-top: 10%;
+
+}
+
+.skills-container-itens{
+  width: 200px;
+  height: 160px;
+  margin-right: 10%;
 }
 
 .icon {
@@ -512,6 +518,12 @@ textarea {
     align-items: center;
   }
 
+  .skills-container-itens{
+  position: absolute;
+  width: 50px;
+  height: auto;
+}
+
   .contact-info, 
   .contact-form-container {
     width: 100%;
@@ -647,7 +659,9 @@ textarea {
 
 @media (max-width: 480px) {
   .skills-container {
-    height: 200px;
+    width: 400px;
+    height: 100px;
+    margin: 0;
   }
 
   .icon {

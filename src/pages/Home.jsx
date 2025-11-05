@@ -1,25 +1,29 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { TbBrandPython } from "react-icons/tb";
+import emailjs from "@emailjs/browser";
+
+
 import { IoLogoJavascript } from "react-icons/io5";
-import { FaPhp } from "react-icons/fa6";
-import { SiMysql } from "react-icons/si";
-import { FaReact, FaNodeJs } from "react-icons/fa";
-import { FaRegLightbulb } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaPhp } from "react-icons/fa";
+import { TbBrandPython } from "react-icons/tb";
+import { SiMysql, SiTypescript, SiAdobephotoshop, SiAdobeaftereffects } from "react-icons/si";
+
+
+import { FaRegLightbulb, FaCalendarAlt, FaBook, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { RiTeamLine } from "react-icons/ri";
-import { LuMessageCircle } from "react-icons/lu";
-import { FaCalendarAlt } from "react-icons/fa";
-import { FaBook } from "react-icons/fa";
-import { LuBrain } from "react-icons/lu";
+import { LuMessageCircle, LuBrain } from "react-icons/lu";
 import { FiGithub } from "react-icons/fi";
-import { FaLinkedinIn } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa";
-import emailjs from '@emailjs/browser';
-import Card from '../components/Card/Card.jsx';
+
+
+import Card from "../components/Card/Card.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import PillNav from "../components/NavBar/Navbar.jsx";
+import TypewriterHighlight from "../components/Typewriter/Writer.jsx";
+import { IconCloud } from "../components/IconCloud/IconCloud.tsx";
+
+
 import logo from "/img/port-logo.png";
-import TypewriterHighlight from '../components/Typewriter/Writer.jsx';
+
 
 import './Home.css'
 
@@ -57,6 +61,26 @@ export default function Home() {
 
 
 
+  const slugs = [
+    "typescript",
+    "javascript",
+    "react",
+    "html5",
+    "css3",
+    "express",
+    "prisma",
+    "vercel",
+    "git",
+    "github",
+    "visualstudiocode",
+    "figma",
+    "adobephotoshop",
+    "adobeaftereffects",
+    "nodedotjs",
+    "python",
+    "php"
+  ]
+
   return (
     <>
       <div className="navbar">
@@ -87,7 +111,7 @@ export default function Home() {
       <div className="home-container">
         <div id="banner" className="banner">
 
-             <motion.div
+          <motion.div
             className="banner-image"
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -141,7 +165,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-       
+
 
 
 
@@ -163,14 +187,11 @@ export default function Home() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            viewport={{ once: false, amount: 0.8 }}
+            viewport={{ once: false, amount: 0.1 }}
           >
-            <FaReact className="icon react" />
-            <FaNodeJs className="icon node" />
-            <TbBrandPython className="icon python" />
-            <IoLogoJavascript className="icon js" />
-            <FaPhp className="icon php" />
-            <SiMysql className="icon mysql" />
+            <div className=" relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background px-20 pb-20 pt-8 ">
+              <IconCloud iconSlugs={slugs} />
+            </div>
           </motion.div>
 
           <motion.div
@@ -309,34 +330,45 @@ export default function Home() {
               <h3>Hard Skills</h3>
             </motion.div>
             <motion.div
-              className="hard-skills"
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 2 }}
-              viewport={{ once: false, amount: 0.6 }}
+  className="hard-skills"
+  initial={{ opacity: 0, x: 100 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 2 }}
+  viewport={{ once: false, amount: 0.6 }}
+>
+  <div>
+    <IoLogoJavascript size={50} color="#f7df1e" /> <h2>Javascript</h2>
+  </div>
+  <div>
+    <FaReact size={50} color="#61dbfb" /> <h2>React.js</h2>
+  </div>
+  <div>
+    <FaNodeJs size={50} color="#68a063" /> <h2>Node.js</h2>
+  </div>
+  <div>
+    <TbBrandPython size={50} color="#ffd43b" /> <h2>Python</h2>
+  </div>
+  <div>
+    <FaPhp size={50} color="#777bb4" /> <h2>PHP</h2>
+  </div>
+  <div>
+    <SiMysql size={50} color="#00758f" /> <h2>MySQL</h2>
+  </div>
 
 
+  <div>
+    <SiTypescript size={50} color="#3178c6" /> <h2>TypeScript</h2>
+  </div>
 
-            >
-              <div>
-                <IoLogoJavascript size={50} color="#f7df1e" /> <h2>Javascript</h2>
-              </div>
-              <div>
-                <FaReact size={50} color="#61dbfb" /> <h2>React.js</h2>
-              </div>
-              <div>
-                <FaNodeJs size={50} color="#68a063" /> <h2>Node.js</h2>
-              </div>
-              <div>
-                <TbBrandPython size={50} color="#ffd43b" /> <h2>Python</h2>
-              </div>
-              <div>
-                <FaPhp size={50} color="#777bb4" /> <h2>PHP</h2>
-              </div>
-              <div>
-                <SiMysql size={50} color="#00758f" /> <h2>MySQL</h2>
-              </div>
-            </motion.div>
+  <div>
+    <SiAdobephotoshop size={50} color="#31a8ff" /> <h2>Photoshop</h2>
+  </div>
+
+  <div>
+    <SiAdobeaftereffects size={50} color="#9999ff" /> <h2>After Effects</h2>
+  </div>
+</motion.div>
+
           </div>
         </div>
         <motion.div
