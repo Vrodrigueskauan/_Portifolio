@@ -1,37 +1,41 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { motion, AnimatePresence, scale } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { FaPhp, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaPython, FaWhatsapp, FaLinkedin } from "react-icons/fa";
+import { SiMysql, SiAdobeaftereffects, SiAdobeillustrator, SiAdobephotoshop } from "react-icons/si";
+import { FaBrain } from "react-icons/fa";
+import { FaComments } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
+import { FaSyncAlt } from "react-icons/fa";
+import { FaLightbulb } from "react-icons/fa";
+import { FaClock } from "react-icons/fa";
+import { FaRocket } from "react-icons/fa";
+import { FaPaintBrush } from "react-icons/fa";
+import { FaChartLine } from "react-icons/fa";
+import { FaBalanceScale } from "react-icons/fa";
+import { SquareArrowOutUpRight } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger, ScrollSmoother } from "gsap/all";
+import SplitText from "gsap/SplitText";
+import Footer from "../components/Footer/Footer";
+import Sidebar from "../components/NavBar/Navbar";
 
 
-import { IoLogoJavascript } from "react-icons/io5";
-import { FaReact, FaNodeJs, FaPhp } from "react-icons/fa";
-import { TbBrandPython } from "react-icons/tb";
-import { SiMysql, SiTypescript, SiAdobephotoshop, SiAdobeaftereffects } from "react-icons/si";
 
 
-import { FaRegLightbulb, FaCalendarAlt, FaBook, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
-import { RiTeamLine } from "react-icons/ri";
-import { LuMessageCircle, LuBrain } from "react-icons/lu";
-import { FiGithub } from "react-icons/fi";
+import useTypewriter from "../components/Typewriter/Writer";
 
 
-import Card from "../components/Card/Card.jsx";
-import Footer from "../components/Footer/Footer.jsx";
-import PillNav from "../components/NavBar/Navbar.jsx";
-import TypewriterHighlight from "../components/Typewriter/Writer.jsx";
-import { IconCloud } from "../components/IconCloud/IconCloud.tsx";
-
-
-import logo from "/img/port-logo.png";
-
-
-import './Home.css'
-
+import "./Home.css";
 
 export default function Home() {
+
+  const [modalData, setModalData] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -59,416 +63,962 @@ export default function Home() {
   };
 
 
+  const [projetoSelecionado, setProjetoSelecionado] = useState(null);
+
+  const abrirModal = (projeto) => {
+    setProjetoSelecionado(projeto);
+    setOpenModal(true);
+  };
 
 
-  const slugs = [
-    "typescript",
-    "javascript",
-    "react",
-    "html5",
-    "css3",
-    "express",
-    "prisma",
-    "vercel",
-    "git",
-    "github",
-    "visualstudiocode",
-    "figma",
-    "adobephotoshop",
-    "adobeaftereffects",
-    "nodedotjs",
-    "python",
-    "php"
-  ]
+  useLayoutEffect(() => {
+
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+    const smoother = ScrollSmoother.create({
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      smooth: 1.2,
+      effects: true
+    });
+
+    return () => smoother.kill();
+  }, []);
+
+
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    const split = new SplitText(".split-title", {
+      type: "chars"
+    });
+
+    gsap.from(split.chars, {
+      y: 100,
+      opacity: 0,
+      stagger: 0.05,
+      duration: 1.2,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: ".about-text",
+        start: "top 80%",
+        end: "40% 50%",
+        // markers: true,
+        scrub: 2,
+      }
+    });
+
+    return () => {
+      split.revert();
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+
+
+  }, []);
+
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    const split = new SplitText(".splittest", {
+      type: "lines"
+    });
+
+    gsap.from(split.lines, {
+      y: 100,
+      opacity: 0,
+      stagger: 0.05,
+      duration: 1.2,
+      ease: "expo.out",
+      scrollTrigger: {
+        trigger: ".about-text",
+        start: "top 60%",
+        end: "40% 50%",
+        // markers: true,
+        scrub: 2,
+      }
+    });
+
+    return () => {
+      split.revert();
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+
+
+  }, []);
+
+
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    const split = new SplitText(".about-column h3", {
+      type: "chars"
+    });
+
+    gsap.from(split.chars, {
+      y: 100,
+      opacity: 0,
+      stagger: 0.05,
+      duration: 1.2,
+      ease: "expo.out",
+      scrollTrigger: {
+        trigger: ".about-column",
+        start: "top 80%",
+        end: "40% 50%",
+        // markers: true,
+        scrub: 2,
+      }
+    });
+
+    return () => {
+      split.revert();
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+
+
+  }, []);
+
+
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    const split = new SplitText(".about-column span, .about-column strong, about-column p , about-item p", {
+      type: "chars"
+    });
+
+    gsap.from(split.chars, {
+      x: 100,
+      opacity: 0,
+      stagger: 0.05,
+      duration: 1.2,
+      ease: "expo.out",
+      scrollTrigger: {
+        trigger: ".about-column",
+        start: "top 80%",
+        end: "40% 50%",
+        // markers: true,
+        scrub: 2,
+      }
+    });
+
+    return () => {
+      split.revert();
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+
+
+  }, []);
+
+
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+
+
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.projects-wrapper',
+        start: 'top 50%',
+        end: 'bottom 80%',
+        scrub: 2.5,
+        // markers: true,
+
+      }
+    })
+
+
+    tl.to('.projects-header img', {
+      opacity: 1,
+      x: 0,
+      y: -30,
+      duration: 1.2,
+      rotate: '0deg',
+      ease: 'power4.out',
+
+    });
+
+    tl.to('.projects-header h1', {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: 'power4.out',
+    }, '-=1.2');
+
+
+    tl.to('.project-subtitile', {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: 'power4.out',
+    }, '-=1.2');
+
+
+
+
+
+
+
+
+
+  }, []);
+
+
+
+useLayoutEffect(() => {
+  const ctx = gsap.context(() => {
+    const intro = gsap.timeline();
+
+    const split = new SplitText(".hero-section h1", {
+      type: "chars"
+    });
+
+    gsap.set(split.chars, {
+      y: 120,
+      opacity: 0
+    });
+
+    gsap.set(".hero-section p", {
+      y: 40,
+      opacity: 0
+    });
+
+    intro.to(".mask", {
+      opacity: 0,
+      delay: 2,
+      ease: "expo.inOut",
+      duration: 4
+    });
+
+    intro.to(".hero-section", {
+      maskSize: "1580%",
+      duration: 5,
+      ease: "power2.inOut"
+    }, "-=1.5");
+
+    intro.to(split.chars, {
+      y: 0,
+      opacity: 1,
+      stagger: 0.06,
+      duration: 1.4,
+      ease: "power4.out"
+    }, "-=2.2");
+
+   
+    intro.to(".hero-section p", {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "power3.out"
+    }, "-=1.4");
+
+      intro.to(".sidebar", {
+    opacity:1,
+    duration: 2,
+    ease: "expo.inOut"
+  }, "-=1.5")
+
+
+
+
+  });
+
+
+
+  return () => ctx.revert();
+}, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
+
     <>
-      <div className="navbar">
-        <PillNav
-          logo={logo}
-          logoAlt="Company Logo"
-          items={[
-            { label: 'Sobre', href: '#sobre' },
-            { label: 'Projetos', href: '#projetos' },
-            { label: 'Skills', href: '#skills' },
-            { label: 'Contato', href: '#contact' }
-          ]}
-          activeHref="/"
-          className="custom-nav"
-          ease="power2.easeOut"
-          baseColor="#0f22306d"
-          pillColor="#ffffff"
-          hoveredPillTextColor="#ffffff"
-          pillTextColor="#000000"
 
+      <section className="mask"> <img src="./img/Mascara.svg" alt="" /> </section>
 
+      <Sidebar  />
 
-
-        />
-      </div>
-
-
-      <div className="home-container">
-        <div id="banner" className="banner">
-
+      <AnimatePresence>
+        {modalData && (
           <motion.div
-            className="banner-image"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            whileHover={{ scale: 1.1, rotate: 5, transition: { duration: 0.5, ease: "easeInOut" }, }}
-            whileTap={{ scale: 1 }}
-
-
-
+            className="modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setModalData(null)}
           >
-            <img src="/img/foto.png" alt="" />
-          </motion.div>
-
-          <div className="banner-text">
             <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.5, delay: 0.5 }}
-
-
+              className="modal-content"
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 180 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <h1>Olá, eu sou o Kauan</h1>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 2, delay: 1, }}
+              <button
+                className="close-btn"
+                onClick={() => setModalData(null)}
+              >
+                ✕
+              </button>
 
-
-            >
-              <TypewriterHighlight
-                fixedStart="Sou"
-                phrases={[
-                  "Dev fullstack",
-                  "Designer UX/UI",
-                  "Framer designer",
-                ]}
-                fixedEnd="focado em performance e inovação."
-                typingSpeed={120}
-                deletingSpeed={60}
-                pauseBetween={3000}
-                loop={true}
+              <img
+                src={modalData.image}
+                alt={modalData.title}
+                className="modal-image"
               />
+
+              <h2>{modalData.title}</h2>
+              <p>{modalData.description}</p>
+
+              <a href={modalData.link}><SquareArrowOutUpRight /> Ver Projeto</a>
+
+
+              <div className="modal-gallery">
+
+                <div>
+                  {modalData.ilustration1}
+
+                </div>
+                <div>
+                  {modalData.ilustration2}
+
+                </div>
+                <div>
+                  {modalData.ilustration3}
+
+                </div>
+                <div>
+                  {modalData.ilustration4}
+
+                </div>
+                <div>
+                  {modalData.ilustration5}
+
+                </div>
+                <div>
+                  {modalData.ilustration6}
+
+                </div>
+
+                <div>
+                  {modalData.ilustration7}
+
+                </div>
+                <div>
+                  {modalData.ilustration8}
+
+                </div>
+                <div>
+                  {modalData.ilustration9}
+
+                </div>
+                <div>
+                  {modalData.ilustration10}
+
+                </div>
+                <div>
+                  {modalData.ilustration11}
+
+                </div>
+                <div>
+                  {modalData.ilustration12}
+
+                </div>
+
+
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
             </motion.div>
-            <motion.div
-              className="button-container"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 2, delay: 1.5, }} >
-              <a href="#sobre" className="button-link">Saiba mais</a>
-            </motion.div>
-          </div>
-
-
-
-
-
-        </div>
-        <motion.div
-          className="title"
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.8 }}
-        >
-          <h2 id="sobre" className="title">Sobre Mim</h2>
-        </motion.div>
-
-        <div className="about-section">
-
-          <motion.div
-            className="skills-container"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: false, amount: 0.1 }}
-          >
-            <div className=" relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background px-20 pb-20 pt-8 ">
-              <IconCloud iconSlugs={slugs} />
-            </div>
           </motion.div>
+        )}
+      </AnimatePresence>
 
-          <motion.div
-            className="about-text"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: false, amount: 0.5 }}
-
-          >
-            <p className="sobre">
-              Eu me chamo <strong>Kauan Venancio</strong>, engenheiro de software apaixonado por programação, nascido em Ribeirão Pires (SP) no ano de 2007. Essa paixão surgiu na minha infância, quando comecei a fazer um curso de desenvolvimento de jogos em GameMaker (GML); descobri que além de divertido, programar era uma área em ascensão, então decidi investir nisso para o meu futuro. Hoje trabalho com foco em desenvolvimento web e criação de interfaces funcionais e intuitivas. Tenho experiência em linguagens como JavaScript (com Node.js e React.js) e especialidade em Python, PHP e MySQL. Fora da computação, sou uma pessoa criativa e dedicada a entregar o melhor independentemente da requisição, sempre em constante aprendizado — acredito que cada projeto é uma nova oportunidade de evoluir. <a href="https://wa.me/+5511911241071?text=Olá, vi seu portifólio e gostaria de conhecer-te melhor">Vamos conversar?</a> Adoraria mostrar como posso contribuir com seu próximo desafio.
-            </p>
-          </motion.div>
-
-
-        </div>
-        <motion.div
-          className="title"
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.5 }}>
-          <h2 id="projetos" className="title">Meus Projetos</h2>
-        </motion.div>
-        <div className="project-section">
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: false, amount: 0.5 }}
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
 
 
 
-          >
-            <a href="https://animosity-web-g5ao.vercel.app">
-              <Card
-                image="/img/animosity.png"
-                title="Animosity"
-                description="Meu projeto do TCC para Etec MCM - Um site para um jogo de plataforma."
-                tags={["React", "Node.js", "CSS", "MySQL"]}
-              />
-            </a>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5 }}
-            viewport={{ once: false, amount: 0.5 }}
-          >
-            <Card
-              image="/img/Ghostcat.png"
-              title="GhostCat"
-              description="Em desenvolvimento - Um site e plataforma de agendamento para um Studio de tatuagem, com IA interativa."
-              tags={["React", "MySQL", "CSS", "Python"]}
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 2 }}
-            viewport={{ once: false, amount: 0.5 }}
 
-          >
 
-            <Card
-              image="/img/Byte Amigo.png"
-              title="Byte Amigo"
-              description="Uma plataforma desenvolvido para projeto interfdisciplinar da Etec MCM, que visa facilitar suporte técnico para todosm, e facilitar a vida dos técnicos para encontrar reparos."
-              tags={["HTML", "CSS", "PhP", "MySQL"]}
-            />
-          </motion.div>
+          <div className="container">
 
 
 
-        </div>
-        <motion.div
-          className="title"
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.5 }}>
-          <h2 className="title">Minhas Habilidades</h2>
-        </motion.div>
-
-        <div id="skills" className="habilidades">
-          <div className="skills-block">
-            <motion.div
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: false, amount: 0.5 }}
 
 
-            >
-              <h3>Soft Skills</h3>
-            </motion.div>
-            <motion.div
-              className="soft-skills"
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.5 }}
-              viewport={{ once: false, amount: 0.5 }}
-
-            >
-              <div>
-                <FaRegLightbulb size={50} color="#456882" /> <h2>Criatividade</h2>
-              </div>
-              <div>
-                <RiTeamLine size={50} color="#456882" /> <h2>Trabalho em equipe</h2>
-              </div>
-              <div>
-                <LuMessageCircle size={50} color="#456882" /> <h2>Comunicação</h2>
-              </div>
-              <div>
-                < FaCalendarAlt size={50} color="#456882" /> <h2>Organização</h2>
-              </div>
-              <div>
-                <FaBook size={50} color="#456882" /> <h2>Aprendizado constante</h2>
-              </div>
-              <div>
-                <LuBrain size={50} color="#456882" /> <h2>Disciplina</h2>
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="skills-block">
-            <motion.div
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: false, amount: 0.5 }}
 
 
-            >
-              <h3>Hard Skills</h3>
-            </motion.div>
-            <motion.div
-  className="hard-skills"
-  initial={{ opacity: 0, x: 100 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 2 }}
-  viewport={{ once: false, amount: 0.6 }}
->
-  <div>
-    <IoLogoJavascript size={50} color="#f7df1e" /> <h2>Javascript</h2>
-  </div>
-  <div>
-    <FaReact size={50} color="#61dbfb" /> <h2>React.js</h2>
-  </div>
-  <div>
-    <FaNodeJs size={50} color="#68a063" /> <h2>Node.js</h2>
-  </div>
-  <div>
-    <TbBrandPython size={50} color="#ffd43b" /> <h2>Python</h2>
-  </div>
-  <div>
-    <FaPhp size={50} color="#777bb4" /> <h2>PHP</h2>
-  </div>
-  <div>
-    <SiMysql size={50} color="#00758f" /> <h2>MySQL</h2>
-  </div>
 
 
-  <div>
-    <SiTypescript size={50} color="#3178c6" /> <h2>TypeScript</h2>
-  </div>
 
-  <div>
-    <SiAdobephotoshop size={50} color="#31a8ff" /> <h2>Photoshop</h2>
-  </div>
 
-  <div>
-    <SiAdobeaftereffects size={50} color="#9999ff" /> <h2>After Effects</h2>
-  </div>
-</motion.div>
 
-          </div>
-        </div>
-        <motion.div
-          className="contact"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.2 }}
 
-        >
-          <section id="contact" className="contact">
-            <div className="mensagem-aviso">
-              <h2>Fale Comigo</h2>
-              <p>
-                Entre em contato via email ou através das nossas redes sociais.
-                Estou pronto para ajudar!
-              </p>
-            </div>
 
-            <div className="contact-content">
+            <section id="home" className="hero-section">
 
-              <div className="contact-info">
-                <p>
-                  Você pode nos enviar uma mensagem diretamente pelo formulário ou nos contatar pelas redes sociais:
+              <div className="hero-bg" data-speed=".8" />
+              <div className="hero-text" data-speed="2">
+                <h1
+
+                  style={{ display: "flex" }}
+                >
+
+                  Kauan Venancio
+                </h1>
+
+                <p
+
+                >
+                  Desenvolvedor Full Stack focado em experiências modernas
                 </p>
-                <ul className="redes-sociais">
-                  <li>
-                    <a href="https://www.linkedin.com/in/kauan-venâncio-5918ab302?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noreferrer">
-                      <FaLinkedinIn size={30} />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/vrodrigueskauan" target="_blank" rel="noreferrer">
-                      <FiGithub size={30} />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://wa.me/+5511911241071?text=Olá, vi seu portifólio e gostaria de conhecer-te melhor" target="_blank" rel="noreferrer">
-                      <FaWhatsapp size={30} />
-                    </a>
-                  </li>
-                </ul>
               </div>
 
+            </section>
 
-              <div className="contact-form-container">
-                <h2>Envie sua mensagem</h2>
-                <form onSubmit={sendEmail}>
-                  <div className="form-group">
-                    <label htmlFor="nome">Nome</label>
-                    <input
-                      type="text"
-                      id="nome"
-                      name="from_name"
-                      value={name}
-                      placeholder="Seu nome"
-                      onChange={(e) => setName(e.target.value)}
-                      required
+
+
+
+
+
+            <section id="about" className="about-wrapper" data-speed="1.2">
+              <div className="about-container">
+
+
+                <div
+                  className="about-photo"
+
+
+                >
+                  <img
+                    data-speed='1.5'
+                    src="/img/about-img.png" alt="Sobre mim"
+
+                  />
+                  <span
+                    className="about-name"
+
+
+
+                  >
+                    Kauan
+                  </span>
+                </div>
+
+
+                <div
+                  className="about-text"
+
+                >
+                  <span
+                    className="about-label"
+
+
+                  >
+                    Sobre mim
+                  </span>
+
+                  <h1
+                    className="split-title"
+                    initial={{ y: 40, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    viewport={{ once: false, amount: 0.4 }}
+
+
+                  >
+                    Olá<span>.</span>
+                  </h1>
+
+                  <p
+                    className="about-text splittest">
+
+                    Sou desenvolvedor frontend focado em experiências visuais imersivas, unindo design, animação e código para criar interfaces que contam histórias. Trabalho com atenção obsessiva aos detalhes, motion fluido e estética consistente, sempre buscando ir além do “funcional” e entregar algo memorável.
+
+                    Tenho experiência no desenvolvimento de sites e sistemas modernos, responsivos e performáticos, utilizando React, JavaScript, CSS avançado, GSAP e Framer Motion, com foco em narrativa visual, interações refinadas e identidade forte. Acredito que um bom produto digital não apenas funciona — ele comunica, emociona e marca.
+
+                    Estou em constante evolução, explorando novas técnicas de animação, tipografia e arquitetura de interfaces, sempre equilibrando criatividade e código limpo. Meu objetivo é transformar ideias em experiências digitais únicas, com personalidade, impacto visual e excelência técnica.
+
+                  </p>
+
+
+                  <div className="about-grid">
+
+                    <div className="about-column">
+                      <h3
+
+
+                      >
+                        Educação
+                      </h3>
+
+                      <div className="about-item">
+                        <span>2023 – 2025</span>
+                        <strong>Etec Prof. Maria Cristina Medeiros</strong>
+                        <p>Curso Técnico em Informática para Internet</p>
+                      </div>
+                      <div className="about-item">
+                        <span>2018 – 2020</span>
+                        <strong>Help CNI</strong>
+                        <p>Curso de Desenvolvimento de jogos em GML</p>
+                      </div>
+                    </div>
+
+                    <div className="about-column">
+                      <h3
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 1.5 }}
+                        viewport={{ once: false, amount: 0.4 }}
+
+                      >
+                        Experiencias
+                      </h3>
+
+                      <div className="about-item">
+                        <span>2025</span>
+                        <strong>Freelancer</strong>
+                        <p>Dev. Fullstack</p>
+                      </div>
+
+                      <div className="about-item">
+                        <span>2025</span>
+                        <strong>Personalcob</strong>
+                        <p>Operador de Telemarketing</p>
+                      </div>
+                    </div>
+
+
+
+
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+            <section className="projects-wrapper">
+              <div className="projects-scene" data-speed='0.9' />
+
+              <div className="projects-paper" data-speed='1.2'>
+
+                <header className="projects-header">
+                  <div className="header-text">
+                    <h1
+
+                      style={{ display: "flex" }}
+                    >
+                      {"Projetos".split("").map((char, i) => (
+                        <motion.span
+                          className="spanzin"
+
+
+                        >
+                          {char === " " ? "\u00A0" : char}
+                        </motion.span>
+                      ))}
+                    </h1>
+                    <span
+                      className="project-subtitile"
+
+                    >
+                      seleção de alguns trabalhos que desenvolvi
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      src="/img/sentado.png" alt=""
+                      className="projects-img"
+
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="from_email"
-                      value={email}
-                      placeholder="Seu email"
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
+                </header>
 
-                  <div className="form-group">
-                    <label htmlFor="mensagem">Mensagem</label>
-                    <textarea
-                      id="mensagem"
-                      name="message"
-                      value={message}
-                      placeholder="Escreva sua mensagem"
-                      onChange={(e) => setMessage(e.target.value)}
-                      required
-                    />
-                  </div>
+                {/* <nav className="projects-filters">
+                  <button
 
-                  <button type="submit" className="submit-btn">
-                    Enviar
+
+                  >
+                    Todos
                   </button>
-                </form>
+                  <button
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
+                  >
+                    Web
+                  </button>
+                  <button
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 1.2, ease: "easeOut", delay: 0.8 }}
+                  >
+                    Vídeo
+                  </button>
+                  <button
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 1.2, ease: "easeOut", delay: 1 }}
+                  >
+                    Motion
+                  </button>
+
+                </nav> */}
+
+                <div className="projects-list">
+                  <article className="project-item"
+                    style={{
+                      backgroundImage: "url('/img/byte-amigo.svg')"
+                    }}
+
+                    onClick={() =>
+                      setModalData({
+                        title: "Byte Amigo",
+                        image: "/img/byte-amigo.svg",
+                        description: "O site da Byte Amigo foi desenvolvido utilizando HTML5 para a estrutura semântica, CSS3 para estilização responsiva e animações, e JavaScript para interatividade e manipulação dinâmica da interface. O backend foi implementado em PHP, responsável pelas regras de negócio, autenticação e comunicação com o banco de dados, utilizando MySQL para garantir organização, integridade e desempenho dos dados. O projeto segue boas práticas de desenvolvimento web, com separação entre frontend e backend e estrutura preparada para futuras expansões.",
+                        ilustration1: <img src="/img/byte-amigo1.png" alt="" />,
+                        ilustration2: <img src="/img/byte-amigo7.png" alt="" />,
+                        ilustration3: <img src="/img/byte-amigo2.png" alt="" />,
+                        ilustration4: <img src="/img/byte-amigo3.png" alt="" />,
+                        ilustration5: <img src="/img/byte-amigo4.png" alt="" />,
+                        ilustration6: <img src="/img/byte-amigo5.png" alt="" />
+
+
+                      })
+                    }
+
+                  >
+                    <div className="project-overlay">
+                      <h2>Byte Amigo (indisponível)</h2>
+                      <p>Assistência técnica & plataforma digital </p>
+                      <div className="project-tech">
+                        <FaHtml5 size={35} color="#b01818" />
+                        <FaCss3Alt size={35} color="#b01818" />
+                        <FaPhp size={35} color="#b01818" />
+                        <SiMysql size={35} color="#b01818" />
+                      </div>
+                    </div>
+                  </article>
+
+
+                  <article className="project-item"
+                    style={{
+                      backgroundImage: "url('/img/animosity.png')"
+                    }}
+
+
+                    onClick={() =>
+                      setModalData({
+                        title: "Animosity",
+                        image: "/img/animosity-banner.png",
+                        description: "O site Animosity foi desenvolvido com o objetivo de divulgar/informar o jogo animosity, com a possibilidade de download da versão beta. Para o desenvolvimento do projeto, utilizei React.js, css3 para o desenvolvimento frontend e Node.js + Mysql para o backend. Como utilizamos uma versão gratuita para a hospedagem do BD, o login está funcional, entretanto não dísponível no site.",
+                        link: "https://animosity-web.vercel.app",
+                        ilustration1: <img src="/img/animosity1.png" alt="" />,
+                        ilustration2: <img src="/img/animosity2.png" alt="" />,
+                        ilustration3: <img src="/img/animosity3.png" alt="" />,
+                        ilustration4: <img src="/img/animosity4.png" alt="" />,
+                        ilustration5: <img src="/img/animosity5.png" alt="" />,
+                        ilustration7: <img src="/img/animosity6.png" alt="" />,
+                        ilustration8: <img src="/img/animosity8.png" alt="" />,
+                        ilustration9: <img src="/img/animosity9.png" alt="" />,
+                        ilustration10: <img src="/img/animosity10.png" alt="" />,
+                        ilustration11: <img src="/img/animosity11.png" alt="" />,
+                        ilustration12: <img src="/img/animosity12.png" alt="" />
+
+
+
+                      })
+                    }
+
+                  >
+                    <div className="project-overlay">
+                      <h2>Animosity</h2>
+                      <p>Site de divulgação e download do jogo Animosity</p>
+
+                      <div className="project-tech">
+                        <FaReact size={35} color="#b01818" />
+                        <FaNodeJs size={35} color="#b01818" />
+                        <SiMysql size={35} color="#b01818" />
+                      </div>
+                    </div>
+                  </article>
+
+
+
+                  <article className="project-item"
+                    style={{
+                      backgroundImage: "url('/img/ghostcat1.png')"
+                    }}
+
+
+                    onClick={() =>
+                      setModalData({
+                        title: "Ghostcat",
+                        image: "/img/Ghostcat-banner.png",
+                        description: "Projeto em desenvolvimento: será um sistema de organização de clientes, desenvolvido com react, node.js e haverá uma IA interativa com Python.",
+                        link: "https://animosity-web.vercel.app",
+                        ilustration1: <img src="/img/ghostcat1.png" alt="" />,
+                        ilustration2: <img src="/img/ghostcat2.png" alt="" />,
+                        ilustration3: <img src="/img/ghostcat3.png" alt="" />,
+                        ilustration4: <img src="/img/ghostcat4.png" alt="" />,
+                        ilustration5: <img src="/img/ghostcat5.png" alt="" />,
+                        ilustration7: <img src="/img/ghostcat6.png" alt="" />,
+                        ilustration8: <img src="/img/ghostcat7.png" alt="" />,
+                        ilustration9: <img src="/img/ghostcat8.png" alt="" />,
+                        ilustration10: <img src="/img/ghostcat9.png" alt="" />,
+                        ilustration11: <img src="/img/ghostcat10.png" alt="" />,
+
+
+
+
+                      })
+                    }
+
+                  >
+                    <div className="project-overlay">
+                      <h2>Ghostcat</h2>
+                      <p>Site de agendamento e organização de clientes para o Ghostcat studio.</p>
+
+                      <div className="project-tech">
+                        <FaReact size={35} color="#b01818" />
+                        <FaNodeJs size={35} color="#b01818" />
+                        <SiMysql size={35} color="#b01818" />
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
               </div>
-            </div>
-          </section>
-        </motion.div>
+
+            </section>
 
 
+
+
+
+
+
+
+
+
+
+            <section class="skills">
+
+
+              <img
+                data-speed="1.5"
+                data-lag="0.1"
+                className="skillsimg"
+                src="img/gif-nerd.gif"
+              />
+
+
+
+
+              <img
+                data-speed="1.5"
+                data-lag="0.1"
+                id="img2"
+                src="img/skt.png"
+              />
+
+
+
+              <h1 className="fodase"
+
+                style={{ display: "flex" }}
+              >
+               Minhas Habilidades
+              </h1>
+
+
+              <div class="skills-content">
+
+                <div
+
+                  transition={{ duration: 1.2, ease: "easeOut" }}
+
+                  class="skillscard"
+
+                >
+                  <h1>Hard Skills</h1>
+                  <div > <FaHtml5 size={35} color="#b01818" /> </div>
+                  <div> <FaCss3Alt size={35} color="#b01818" /> </div>
+                  <div> <FaReact size={35} color="#b01818" />   </div>
+                  <div> <FaNodeJs size={35} color="#b01818" /></div>
+                  <div>  <FaPython size={35} color="#b01818" />  </div>
+                  <div> <FaPhp size={35} color="#b01818" /> </div>
+                  <div> <SiMysql size={35} color="#b01818" /> </div>
+                  <div> <SiAdobeaftereffects size={35} color="#b01818" /> </div>
+                  <div> <SiAdobeillustrator size={35} color="#b01818" /> </div>
+                  <div> <SiAdobephotoshop size={35} color="#b01818" /> </div>
+                </div>
+
+                <div
+
+
+                  className="skillscard1">
+                  <h1>Soft Skills</h1>
+
+                  <div className="skill-item">
+                    <FaBrain size={45} />
+                    <span>Inteligência Emocional</span>
+                  </div>
+
+                  <div className="skill-item">
+                    <FaComments size={45} />
+                    <span>Comunicação</span>
+                  </div>
+
+                  <div className="skill-item">
+                    <FaUsers size={45} />
+                    <span>Trabalho em Equipe</span>
+                  </div>
+
+                  <div className="skill-item">
+                    <FaSyncAlt size={45} />
+                    <span>Adaptabilidade</span>
+                  </div>
+
+                  <div className="skill-item">
+                    <FaLightbulb size={45} />
+                    <span>Pensamento Crítico</span>
+                  </div>
+
+                  <div className="skill-item">
+                    <FaRocket size={45} />
+                    <span>Proatividade</span>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+
+
+
+            <section className="contact">
+              <div className="contact-content">
+                <div className="img-side">
+                  <img src="/img/contato.png" alt="" />
+                  <div className="social-medias">
+
+                    <div className="social-icon">
+                      <a href="https://wa.me/5511911241071?text=Ol%C3%A1%2C%20vi%20seu%20portif%C3%B3lio%20e%20estou%20interessaado%20em%20saber%20mais!"><FaWhatsapp size={45} color="#b01818" /></a>
+                    </div>
+
+                    <div className="social-icon">
+                      <a href="https://www.linkedin.com/in/kauan-venâncio-5918ab302"><FaLinkedin size={45} color="#b01818" /></a>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div className="form-side">
+                  <h1>
+                    Fale Comigo!
+                  </h1>
+                  <form class="contact-form" onSubmit={sendEmail}>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                      <label>Nome</label>
+                    </div>
+
+                    <div class="input-group">
+                      <input
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+
+                      />
+                      <label>Email</label>
+                    </div>
+
+                    <div class="input-group">
+                      <textarea
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+
+
+
+                        rows="4" required></textarea>
+                      <label>Mensagem</label>
+                    </div>
+
+                    <button type="submit">Enviar Mensagem</button>
+                  </form>
+                </div>
+              </div>
+            </section>
+
+
+
+
+
+          </div>
+          <Footer />
+
+        </div>
       </div>
-      <Footer />
     </>
-
-
   );
 }
