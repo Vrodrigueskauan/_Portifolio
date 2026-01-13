@@ -295,7 +295,8 @@ useLayoutEffect(() => {
     });
 
     intro.to(".hero-section", {
-      maskSize: "2580%",
+      maskSize: "5580%",
+      maskPosition: 'center',
       duration: 5,
       ease: "power2.inOut"
     }, "-=1.5");
@@ -809,7 +810,7 @@ useLayoutEffect(() => {
                         title: "Ghostcat",
                         image: "/img/Ghostcat-banner.png",
                         description: "Projeto em desenvolvimento: será um sistema de organização de clientes, desenvolvido com react, node.js e haverá uma IA interativa com Python.",
-                        link: "https://animosity-web.vercel.app",
+                        link: "https://ghostcat-studio.vercel.app",
                         ilustration1: <img src="/img/ghostcat1.png" alt="" />,
                         ilustration2: <img src="/img/ghostcat2.png" alt="" />,
                         ilustration3: <img src="/img/ghostcat3.png" alt="" />,

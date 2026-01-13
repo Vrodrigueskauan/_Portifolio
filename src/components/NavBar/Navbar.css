@@ -20,8 +20,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(11, 18, 21, 0.65);
-  backdrop-filter: blur(14px);
   z-index: 9999;
 }
 

@@ -357,7 +357,11 @@ body {
   -webkit-mask-size: 70%;
   mask-size: 70%;
 
-  will-change: mask-size;
+will-change: 
+  mask-size,
+  mask-position,
+  -webkit-mask-size,
+  -webkit-mask-position;
   
 
 }
@@ -1340,14 +1344,22 @@ body {
     display: none;
   }
 
+
+
+
   .hamburger {
     display: flex;
+    
+
+
   }
 
   /* HERO */
   .hero-section {
     min-height: 90vh;
     padding: 2rem 1.2rem;
+    -webkit-mask-position: center 60%;
+mask-position: center 60%;
   }
 
   .hero-section h1 {
