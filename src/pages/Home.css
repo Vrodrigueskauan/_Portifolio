@@ -14,6 +14,40 @@ body {
 
 }
 
+progress::-webkit-progress-bar {
+  background-color: #690000;
+}
+
+progress::-webkit-progress-value {
+  background: #0B1215;
+}
+
+progress::-moz-progress-bar {
+  background: #690000;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #690000;
+  border-radius: 999px;
+  transition: background 0.5s ease;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e10600;
+}
+
+
 
 @font-face {
   font-family: "Titles";
@@ -1360,6 +1394,11 @@ will-change:
     padding: 2rem 1.2rem;
     -webkit-mask-position: center 60%;
 mask-position: center 60%;
+will-change: 
+  mask-size,
+  mask-position,
+  -webkit-mask-size,
+  -webkit-mask-position;
   }
 
   .hero-section h1 {

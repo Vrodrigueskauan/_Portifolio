@@ -181,40 +181,7 @@ export default function Home() {
   }, []);
 
 
-
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, SplitText);
-
-    const split = new SplitText(".about-column span, .about-column strong, about-column p , about-item p", {
-      type: "chars"
-    });
-
-    gsap.from(split.chars, {
-      x: 100,
-      opacity: 0,
-      stagger: 0.05,
-      duration: 1.2,
-      ease: "expo.out",
-      scrollTrigger: {
-        trigger: ".about-column",
-        start: "top 80%",
-        end: "40% 50%",
-        // markers: true,
-        scrub: 2,
-      }
-    });
-
-    return () => {
-      split.revert();
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
-
-
-  }, []);
-
-
-
-  useLayoutEffect(() => {
+useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
 
@@ -266,37 +233,32 @@ export default function Home() {
 
 
   }, []);
+  
 
 
 
 useLayoutEffect(() => {
   const ctx = gsap.context(() => {
+
+    const smoother = ScrollSmoother.get();
+    smoother.paused(true); 
+
     const intro = gsap.timeline();
 
-    const split = new SplitText(".hero-section h1", {
-      type: "chars"
-    });
+    const split = new SplitText(".hero-section h1", { type: "chars" });
 
-    gsap.set(split.chars, {
-      y: 120,
-      opacity: 0
-    });
-
-    gsap.set(".hero-section p", {
-      y: 40,
-      opacity: 0
-    });
+    gsap.set(split.chars, { y: 120, opacity: 0 });
+    gsap.set(".hero-section p", { y: 40, opacity: 0 });
 
     intro.to(".mask", {
       opacity: 0,
       delay: 2,
-      ease: "expo.inOut",
-      duration: 4
+      duration: 4,
+      ease: "expo.inOut"
     });
 
     intro.to(".hero-section", {
       maskSize: "5580%",
-      maskPosition: 'center',
       duration: 5,
       ease: "power2.inOut"
     }, "-=1.5");
@@ -309,7 +271,6 @@ useLayoutEffect(() => {
       ease: "power4.out"
     }, "-=2.2");
 
-   
     intro.to(".hero-section p", {
       y: 0,
       opacity: 1,
@@ -317,21 +278,26 @@ useLayoutEffect(() => {
       ease: "power3.out"
     }, "-=1.4");
 
-      intro.to(".sidebar", {
-    opacity:1,
-    duration: 2,
-    ease: "expo.inOut"
-  }, "-=1.5")
+    intro.to(".sidebar", {
+      opacity: 1,
+      duration: 2,
+      ease: "expo.inOut"
+    }, "-=1.5");
 
-
-
+    
+    intro.call(() => {
+      smoother.paused(false);
+    }, null, "-=5");
 
   });
 
-
-
-  return () => ctx.revert();
+  return () => {
+    ScrollSmoother.get()?.paused(false);
+    ctx.revert();
+  };
 }, []);
+
+
 
 
 

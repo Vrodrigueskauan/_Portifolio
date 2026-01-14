@@ -1,15 +1,12 @@
-/* =========================
-   RESET BÁSICO
-========================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
-   TOPBAR
-========================= */
+
+
 .topbar {
   position: fixed;
   top: 0;
@@ -23,14 +20,13 @@
   z-index: 9999;
 }
 
-/* LOGO */
+
 .logo {
   font-family: "Titles", serif;
   font-size: 1.8rem;
   color: #e10600;
 }
 
-/* BOTÃO MENU (HAMBURGER) */
 .menu-btn {
   background: none;
   border: none;
@@ -40,9 +36,7 @@
   z-index: 10000;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -51,15 +45,12 @@
   width: min(420px, 90vw);
   background: rgba(11, 18, 21, 0.96);
   backdrop-filter: blur(18px);
-  box-shadow: -40px 0 80px rgba(0, 0, 0, 0.7);
   z-index: 9998;
 }
 
-/* =========================
-   BOTÃO FECHAR (X)
-========================= */
+
 .close-btn {
-  position: fixed; /* <- chave do problema */
+  position: fixed; 
   top: 1.5rem;
   right: 1.5rem;
   background: none;
@@ -71,20 +62,17 @@
   z-index: 10001;
 }
 
-/* =========================
-   NAV DA SIDEBAR
-========================= */
+
 .sidebar-nav {
   height: 100%;
-  padding: 6rem 3rem; /* espaço pro X */
+  padding: 6rem 3rem; 
   display: flex;
   flex-direction: column;
   gap: 2.6rem;
+  z-index: 9999;
 }
 
-/* =========================
-   LINKS
-========================= */
+
 .sidebar-nav a {
   font-family: "Titles", serif;
   font-size: 2.4rem;
@@ -92,9 +80,11 @@
   text-decoration: none;
   position: relative;
   width: fit-content;
+  pointer-events: all;
+  z-index: 999;
 }
 
-/* LINHA ANIMADA */
+
 .sidebar-nav a::after {
   content: "";
   position: absolute;
@@ -110,9 +100,7 @@
   width: 100%;
 }
 
-/* =========================
-   RESPONSIVO
-========================= */
+
 @media (max-width: 768px) {
   .sidebar-nav {
     padding: 7rem 2rem;
