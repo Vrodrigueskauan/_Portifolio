@@ -259,7 +259,7 @@ useLayoutEffect(() => {
 
     intro.to(".hero-section", {
       maskSize: "5580%",
-      maskPosition: "center 50%",
+      maskPosition: "50% 50%",
       duration: 5,
       ease: "power2.inOut"
     }, "-=1.5");
